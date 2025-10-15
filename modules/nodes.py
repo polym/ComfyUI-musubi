@@ -11,8 +11,6 @@ from .comfy_ops import block_scaled_fp8_ops
 
 
 class MusubiUNETLoader:
-    """
-    """
     @classmethod
     def INPUT_TYPES(cls):
         return {
