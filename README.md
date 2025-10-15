@@ -22,6 +22,12 @@ This repository provides a custom node for ComfyUI to load diffusion models with
 1.  **Download the model**: Download the musubi block-wise scaled diffusion model from [huggingface](https://huggingface.co/polym/COMFY_MODELS) and place it in your `ComfyUI/models/diffusion_models` directory.
 2.  **Load the model**: After installation, you can find the `MusubiUNETLoader` node in the "musubi" category. Use it in the same way you would use the standard `UNETLoader` to load your musubi block-wise scaled models.
 
+## 🎨 Examples
+
+Drag and drop the image into ComfyUI to reproduce the workflow.
+
+![Musubi LoRA Example](example_workflows/musubi-lora-example-02.png)
+
 ## 🙏 Credits
 
 *   The original `UNETLoader` from [ComfyUI](https://github.com/comfyanonymous/ComfyUI).
