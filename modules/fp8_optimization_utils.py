@@ -9,11 +9,10 @@ import logging
 from tqdm import tqdm
 
 from .safetensors_utils import MemoryEfficientSafeOpen
+from .device_utils import clean_memory_on_device
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.INFO)
-
-from .device_utils import clean_memory_on_device
 
 
 def calculate_fp8_maxval(exp_bits=4, mantissa_bits=3, sign_bits=1):

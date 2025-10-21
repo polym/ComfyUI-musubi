@@ -8,13 +8,13 @@ import logging
 from tqdm import tqdm
 
 from .device_utils import synchronize_device
+from .fp8_optimization_utils import load_safetensors_with_fp8_optimization
+from .safetensors_utils import MemoryEfficientSafeOpen
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.INFO)
 
 
-from .fp8_optimization_utils import load_safetensors_with_fp8_optimization
-from .safetensors_utils import MemoryEfficientSafeOpen
 
 
 def filter_lora_state_dict(
@@ -36,8 +36,7 @@ def filter_lora_state_dict(
         logger.info(f"Filtered keys with exclude pattern {exclude_pattern}: {original_key_count_ex} -> {len(weights_sd.keys())}")
 
     if len(weights_sd) != original_key_count:
-        remaining_keys = list(set([k.split(".", 1)[0] for k in weights_sd.keys()]))
-        remaining_keys.sort()
+        remaining_keys = sorted({k.split(".", 1)[0] for k in weights_sd.keys()})
         logger.info(f"Remaining LoRA modules after filtering: {remaining_keys}")
         if len(weights_sd) == 0:
             logger.warning("No keys left after filtering.")
